@@ -1,5 +1,5 @@
 # LeetBoard
- An anonymous imageboard inspired by early internet forums. Users can post text and images, with avatars from the Rick and Morty universe. No user registration is required. Posts and comments are temporary, automatically disappearing after a set time based on activity, fostering dynamic discussions.
+ An anonymous imageboard inspired by early internet forums. Users can post text and images, with avatars from the Rick and Morty universe. No user registration is required. Posts and comments are temporary, automatically disappearing after a set time based on activity, fostering dynamic discussions. S3 used to upload Pictures
 ## To run the project, follow these steps:
 
 Run the Database Server and Triple-s Server:
