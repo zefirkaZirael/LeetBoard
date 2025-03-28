@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #4e73df;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        nav {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #f0f0f0;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffb3b3;
+        }
+
+        main {
+            margin: 20px auto;
+            max-width: 1100px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .post {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .post .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .post .header img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .post .header b {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .post .content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .post .content img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .text {
+            max-width: 600px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .comments {
+            margin-top: 40px;
+        }
+
+        .comment-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .comment {
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .comment .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .comment .header img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .comment .content {
+            display: flex;
+            gap: 15px;
+        }
+
+        .comment .content img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+        }
+
+        .comment .text {
+            flex: 1;
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .add-comment {
+            margin-top: 50px;
+        }
+
+        .add-comment h3 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .commentForm {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .commentForm td {
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        .commentForm input[type="text"],
+        .commentForm textarea,
+        .commentForm input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            font-size: 1em;
+        }
+
+        .commentForm input[type="submit"] {
+            background-color: #4e73df;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .commentForm input[type="submit"]:hover {
+            background-color: #2e59d9;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Thread Title</h1>
+    <nav>
+        [<a href="/catalog">Catalog</a>] |
+        [<a href="/archive">Archive</a>]
+    </nav>
+</header>
+<main>
+    <!-- Main Post -->
+    <div class="post">
+        <div class="header">
+            <img src="{{.ImageURL}}" alt="User Avatar" width="50px" height="50px">
+            <b>User Name: {{.Name}}</b>
+            <span>ID: {{.ID}}</span>
+        </div>
+        <div class="created_time">
+            <span>Created Time: {{.CreatedAt}}</span>
+        </div>
+        <div class="content">
+            <a href="{{.ImageLink}}">
+                <img src="{{.ImageLink}}" alt="Post Image">
+            </a>
+            <div class="text">
+                <h3>{{.Title}}</h3>
+                <p>{{.Content}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Comments Section -->
+    <div class="comments">
+        <h2>Comments</h2>
+        <ul class="comment-list">
+            {{range .Comments}}
+            <li class="comment">
+                <div class="header">
+                    <h3>Reply to: {{.ReplyToID}}</h3>
+                    <img src="{{.AvatarURL}}" alt="User Avatar" width="50px" height="50px">
+                    <b>{{.Username}} </b>
+                    <span> Comment ID: {{.ID}}</span>
+                </div>
+                <div class="created_time">
+                    <span>Created Time: {{.CreatedAt}}</span>
+                </div>
+                <div class="content">
+                    <a href="{{.ImageLink}}">
+                        <img src="{{.ImageLink}}" alt="Comment Image">
+                    </a>
+                    <div class="text">
+                        <p>{{.Content}}</p>
+                    </div>
+                </div>
+            </li>
+            {{end}}
+        </ul>
+    </div>
+
+    <!-- Add Comment Section -->
+    <div class="add-comment">
+        <h3>Add a Comment</h3>
+        <form action="/submit-comment" method="POST" enctype="multipart/form-data">
+            <table class="commentForm">
+                <tbody>
+                    <tr>
+                        <input type="hidden" name="postID" value="{{.ID}}">
+                    </tr>
+                    <tr>
+                        <td><label for="replyTo">Reply To</label></td>
+                        <td>
+                            <input id="replyTo" name="ReplyTo" type="text" placeholder="(optional)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="comment">Comment</label></td>
+                        <td>
+                            <textarea id="comment" name="Content" rows="5" placeholder="Write your comment here..."></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="file">File</label></td>
+                        <td>
+                            <input id="file" name="File" type="file">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Post Comment">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</main>
+</body>
+</html>

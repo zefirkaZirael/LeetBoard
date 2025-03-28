@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+        }
+
+        header {
+            background-color: #4e73df;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        nav a {
+            color: #fff;
+            font-size: 1rem;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f0b429;
+        }
+
+        /* Main content styles */
+        main {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .postForm {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .postForm td {
+            padding: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .postForm input[type="text"], 
+        .postForm textarea, 
+        .postForm input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        .postForm textarea {
+            resize: vertical;
+        }
+
+        .postForm input[type="submit"] {
+            background-color: #4e73df;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .postForm input[type="submit"]:hover {
+            background-color: #2e59d9;
+        }
+
+        /* Additional link styles */
+        .form-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-link a {
+            font-size: 1rem;
+            color: #4e73df;
+            text-decoration: none;
+        }
+
+        .form-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Create a New Post</h1>
+    <nav>
+        <a href="/catalog">Catalog</a> |
+        <a href="/archive">Archive</a>
+    </nav>
+</header>
+
+<main>
+    <form action="/submit-post" method="POST" enctype="multipart/form-data">
+        <table class="postForm">
+            <tbody>
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <td><input id="name" name="Name" type="text" placeholder="Anonymous"></td>
+                </tr>
+                <tr>
+                    <td><label for="title">Title</label></td>
+                    <td><input id="title" name="Title" type="text" required></td>
+                </tr>
+                <tr>
+                    <td><label for="content">Content</label></td>
+                    <td><textarea id="content" name="Content" cols="48" rows="4" placeholder="Write your post here..." required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="file">File</label></td>
+                    <td><input id="file" name="File" type="file" accept="image/*, .pdf, .docx, .txt"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" value="Post">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</main>
+
+<div class="form-link">
+    <a href="/catalog">Go back to Catalog</a>
+</div>
+
+</body>
+</html>

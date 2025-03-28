@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error {{.Code}}</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Container for the error page */
+        .error-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .error-container h1 {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .error-container p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .error-container a {
+            font-size: 1rem;
+            color: #ffffff;
+            text-decoration: none;
+            margin: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        .error-container a:hover {
+            color: #ffffff;
+        }
+
+        .error-code {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        /* Button-like links */
+        .button-link {
+            padding: 10px 20px;
+            background-color: #000000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .button-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Error Code: <span class="error-code">{{.Code}}</span></h1>
+        <p>{{.Message}}</p>
+        <div>
+            <a href="javascript:history.back()" class="button-link">Go Back</a>
+            <a href="/catalog" class="button-link">Return to Home Page</a>
+        </div>
+    </div>
+</body>
+</html>

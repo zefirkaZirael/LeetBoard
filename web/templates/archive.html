@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1337b04rd - Archive</title>
+    <style>
+        /* General body styles */
+        body {
+            background-color: #dce3ea;
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #4a4f57;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #5a6d8a;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header h1:nth-of-type(2) {
+            font-size: 1.5rem;
+            margin-top: 5px;
+            opacity: 0.85;
+        }
+
+        nav a {
+            color: #dce3ea;
+            font-size: 1.1rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #b0b8c2;
+        }
+
+        /* Main content styles */
+        main {
+            padding: 40px 10%;
+        }
+
+        .posts .list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .post {
+            background-color: #c2c9d3;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            filter: grayscale(60%) contrast(95%) hue-rotate(-10deg);
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            filter: grayscale(40%) contrast(100%) hue-rotate(-10deg);
+        }
+
+        .post img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #aeb5c0;
+        }
+
+        .post h3 {
+            font-size: 1.4rem;
+            margin: 15px 0;
+            color: #3f4753;
+        }
+
+        .post a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #5a6d8a;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #dce3ea;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>1337b04rd</h1>
+    <h1>Archive</h1>
+    <nav>
+        <a href="catalog/create-post">Create Post</a> |
+        <a href="catalog">Catalog</a>
+    </nav>
+</header>
+
+<main>
+    <section class="posts">
+        <ul class="list">
+            {{range .}}
+            <li class="post">
+                <a href="/archive/post/{{.ID}}">
+                    <img src="{{.ImageLink}}" alt="No Image Available">
+                    <h3>{{.Title}}</h3>
+                </a>
+            </li>
+            {{end}}
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 1337b04rd. All Rights Reserved.</p>
+    <p>Authors: Sagat Bekbolat and Rakhimov Mansur</p>
+</footer>
+
+</body>
+</html>
